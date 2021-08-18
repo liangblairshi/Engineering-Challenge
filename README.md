@@ -1,5 +1,7 @@
 # Engineering-Challenge
 
+If you want to take a look at the result first, feel free to jump to the [Visualization part]() directly. 
+
 ## 1) Extract
 
 First of all, we want to fetch the historical data of the constituents within the [constituents_history.pkl]() file.
@@ -26,7 +28,7 @@ I stored the historical data into AWS RDS MySQL database. One can also install M
 
 ### How to run:
   1. If you haven't done so, install SQLAlchemy by running ```pip install SQLAlchemy```
-  2. Download the script [ETL.py]()
+  2. Download the script [ETL.py]() and [config.py]() under the same directory
   3. Run script using ```python3 ETL.py```
 
 ## 3) Analyze
@@ -42,7 +44,7 @@ This section calculate (1) the index value (price) for each day that you have da
   5. The analytical data is already stored in database. Running the script below will not update the existing table in db unless change the code ```if_exists='fail'``` parameter in the script.
 
 ### How to run:
-  1. Download the scripts [config.py](), [ETL.py]() and [Analyze.py]() under the same directory
+  1. Download the scripts [Analyze.py]() and put it under the same directory as config.py and ETL.py
   2. Run script using ```python3 Analyze.py```
 
 ## 4) Visualize (Bonus)
@@ -52,8 +54,8 @@ I mainly used Dash to set up the webpage. The website has the following elements
     2. Chart with the historical data of the current constituents selected in the dropdown.
     
 ### How to run:
-  1. Please use pip install ```dash```, ```dash_core_components```, ```dash_html_components```, ```dash_table``` if you haven't done so.
+  1. Please use pip install ```dash```, ```dash_core_components```, ```dash_html_components```, ```dash_table```, and other packages mentioned in the previous steps if you haven't done so.
   2. Download the scripts [web_app.py]() and put it under the same directory as your [config.py]()
   3. Run script using ```python3 web_app.py```
   4. Once the script is running, you will find a URL in your linux commendline/terminal (i.e. http://127.0.0.1:8050/) Copy and paste it into a browser.
-  5. If you choose the constituents from the dropdown list, the table below also gets updated.
+  5. You can choose between which database you want to display under the first dropdown: ```Hist_db```(constituents historical data) or ```Anal_db``` (Index value & sector distribution), and then choose either a ticker or an analytical result under the second dropdown. The table below will get updated.
