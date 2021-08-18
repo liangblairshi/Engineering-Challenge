@@ -1,6 +1,6 @@
 # Engineering-Challenge
 
-It would be a lot easier to pull/download all files first and put them under the same directory before start. If you want to take a look at the result first, feel free to jump to Part 4 for Visualization directly. 
+It would be a lot easier to pull/download all files first and put them under the same directory before you start. After that, if you want to take a look at the result first, feel free to jump to Part 4 for Visualization directly. 
 
 ## 1) Extract
 
