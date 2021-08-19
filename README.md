@@ -4,8 +4,9 @@
 ## Setting up EC2 connection
 I've put all files under AWS EC2 to make the running process more easier. Please follow the step to access my EC2 instance.
   1. Make sure to download the [IMFS.pem](https://github.com/liangblairshi/Engineering-Challenge/blob/a8ee9aa8d1b48bfaeb1e3bb5e0c1774def37a146/IMFS.pem) credential file to your local
-  2. SSH to access my EC2 instance. Use the following commend in your terminal/linux environment: ```ssh -i /your-full-path-of-local-pem-file/IMFS.pem ec2-user@ec2-13-58-134-135.us-east-2.compute.amazonaws.com```
-  3. Once you successfully access the instance, go to the folder IMFS-challenge by using ```cd IMFS-challenge``` commend. All my .py files are under this directory.
+  2. Make sure you change the .pem permission using ```chmod 600 /your-full-path-of-local-pem-file/IMFS.pem```
+  3. SSH to access my EC2 instance. Use the following commend in your terminal/linux environment: ```ssh -i /your-full-path-of-local-pem-file/IMFS.pem ec2-user@ec2-13-58-134-135.us-east-2.compute.amazonaws.com```
+  4. Once you successfully access the instance, go to the folder IMFS-challenge by using ```cd IMFS-challenge``` commend. All my .py files are under this directory.
 
 Once you are here, please feel to follow the steps below or jump to Part 4 for Visualization directly if you want.
 
