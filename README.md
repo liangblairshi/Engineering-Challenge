@@ -3,8 +3,8 @@
 
 ## Setting up EC2 connection
 I've put all files under AWS EC2 to make the running process more easier. Please follow the step to access my EC2 instance.
-  1. Make sure to download the [IMFS.pem]() credential file
-  2. SSH to access my EC2 instance. Use the following commend in your terminal/linux environment: ```ssh -i /your-full-path-of-pem-file/IMFS.pem ec2-user@ec2-13-58-134-135.us-east-2.compute.amazonaws.com```
+  1. Make sure to download the [IMFS.pem](https://github.com/liangblairshi/Engineering-Challenge/blob/f4fd5e9c7b9a4a173b4e83696c0d997617e39d4d/IMFS.pem) credential file to your local
+  2. SSH to access my EC2 instance. Use the following commend in your terminal/linux environment: ```ssh -i /your-full-path-of-local-pem-file/IMFS.pem ec2-user@ec2-13-58-134-135.us-east-2.compute.amazonaws.com```
   3. Once you successfully access the instance, go to the folder IMFS-challenge by using ```cd IMFS-challenge``` commend. All my .py files are under this directory.
 
 Once you are here, please feel to follow the steps below or jump to Part 4 for Visualization directly if you want.
@@ -34,9 +34,7 @@ I stored the historical data into AWS RDS MySQL database. One can also install M
   5. Some tickers do not exist in Yahoo Finance and therefore no historical data available, so I choose not to store those table in the database.
 
 ### How to run:
-  1. If you haven't done so, install SQLAlchemy by running ```pip install SQLAlchemy```
-  2. Make sure your [ETL.py](https://github.com/liangblairshi/Engineering-Challenge/blob/f4fd5e9c7b9a4a173b4e83696c0d997617e39d4d/ETL.py) and [config.py](https://github.com/liangblairshi/Engineering-Challenge/blob/f4fd5e9c7b9a4a173b4e83696c0d997617e39d4d/config.py) are under the same directory
-  3. Run script using ```python3 ETL.py```
+  In your SSH EC2 environment (under directory ```IMFS-challenge```), run script using ```python3 ETL.py```
 
 ## 3) Analyze
 
@@ -52,8 +50,7 @@ This section calculate (1) the index value (price) for each day that you have da
   6. The analytical data is already stored in database. Running the script below will not update the existing table in db unless change the code ```if_exists='fail'``` parameter in the script.
 
 ### How to run:
-  1. Make sure your [Analyze.py](https://github.com/liangblairshi/Engineering-Challenge/blob/f4fd5e9c7b9a4a173b4e83696c0d997617e39d4d/Analyze.py), [config.py](https://github.com/liangblairshi/Engineering-Challenge/blob/f4fd5e9c7b9a4a173b4e83696c0d997617e39d4d/config.py) and [ETL.py](https://github.com/liangblairshi/Engineering-Challenge/blob/f4fd5e9c7b9a4a173b4e83696c0d997617e39d4d/ETL.py) are under the same directory
-  2. Run script using ```python3 Analyze.py```
+  In your SSH EC2 environment (under directory ```IMFS-challenge```), run script using ```python3 Analyze.py```
 
 ## 4) Visualize (Bonus)
 
