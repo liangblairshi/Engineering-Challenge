@@ -1,6 +1,14 @@
 # Engineering-Challenge
 
-It would be a lot easier to pull/download all files first and put them under the same directory before you start. After that, if you want to take a look at the result first, feel free to jump to Part 4 for Visualization directly. 
+
+## Setting up EC2 connection
+I've put all files under AWS EC2 to make the running process more easier. Please follow the step to access my EC2 instance.
+  1. Make sure to download the [IMFS.pem]() credential file
+  2. SSH to access my EC2 instance. Use the following commend in your terminal/linux environment: ```ssh -i /your-full-path-of-pem-file/IMFS.pem ec2-user@ec2-13-58-134-135.us-east-2.compute.amazonaws.com```
+  3. Once you successfully access the instance, go to the folder IMFS-challenge by using ```cd IMFS-challenge``` commend. All my .py files are under this directory.
+
+Once you are here, please feel to follow the steps below or jump to Part 4 for Visualization directly if you want.
+
 
 ## 1) Extract
 
@@ -8,12 +16,11 @@ First of all, we want to fetch the historical data of the constituents within th
 
 My script in Python here allows user to input a ticker(i.e. AAPL), and then returns the historical data fetched from the API.
 
-### Steps to run:
-  1. Having python3 in local environment
-  2. If you don't have pickle5 and yfinance on your local yet, install it using ```pip install pickle5``` and ```pip install yfinance```
-  3. Make sure your [constituents_history.pkl](https://github.com/liangblairshi/Engineering-Challenge/blob/f4fd5e9c7b9a4a173b4e83696c0d997617e39d4d/constituents_history.pkl) and [Extract.py](https://github.com/liangblairshi/Engineering-Challenge/blob/f4fd5e9c7b9a4a173b4e83696c0d997617e39d4d/Extract.py) are under the same directory
-  4. For linux/Mac terminal, go to the file directory and run ```python3 Extract.py```
-  5. Input a ticker(i.e. AAPL). If it's in the constituents list, it will return it's historical data and save it to a csv file under the same directory. 
+### Steps to run through SSH:
+  1. In your SSH EC2 environment (under directory ```IMFS-challenge```), run ```python3 Extract.py```
+  2. Input a ticker(i.e. AAPL). If it's in the constituents list, it will return it's historical data and save it to a csv file under the same directory. 
+
+Note: I'm having trouble installing ```pickle5``` on EC2. What I did alternatively was to load .pkl file locally using pickle5, and then dump to a new .pkl file using pickle instead of pickle5 to avoid version issue as the given .pkl file was most likely saved under protocol 5. This does not change the outcome. 
 
 ## 2) Transform & Load
 
@@ -55,8 +62,6 @@ I mainly used Dash to set up the webpage. The website has the following elements
     2. Chart with the historical data of the current constituents selected in the dropdown.
     
 ### How to run:
-  1. Please use pip install ```dash```, ```dash_core_components```, ```dash_html_components```, ```dash_table```, and other packages mentioned in the previous steps if you haven't done so.
-  2. Make sure your [web_app.py](https://github.com/liangblairshi/Engineering-Challenge/blob/f4fd5e9c7b9a4a173b4e83696c0d997617e39d4d/web_app.py) and [config.py](https://github.com/liangblairshi/Engineering-Challenge/blob/f4fd5e9c7b9a4a173b4e83696c0d997617e39d4d/config.py) are under the same directory
-  3. Run script using ```python3 web_app.py```
-  4. Once the script is running, you will find a URL in your linux commendline/terminal (i.e. http://127.0.0.1:8050/) Copy and paste it into a browser.
-  5. You can choose between which database you want to display under the first dropdown: ```Hist_db```(constituents historical data) or ```Anal_db``` (Index value & sector distribution), and then choose either a ticker or an analytical result under the second dropdown. The table below will get updated.
+  1. In your SSH EC2 environment (under directory ```IMFS-challenge```), run script using ```python3 web_app.py```
+  2. Once the script is up and running, open your browser and access this URL: http://13.58.134.135:8050/
+  3. You can choose between which database you want to display under the first dropdown: ```Hist_db```(constituents historical data) or ```Anal_db``` (Index value & sector distribution), and then choose either a ticker or an analytical result under the second dropdown. The table below will get updated.
